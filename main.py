@@ -373,7 +373,7 @@ def drawWindow(Window, gameLayout,mouse,state, score=0):
     for i in range(len(gameLayout)):
         for j in range(len(gameLayout[i])):
             pygame.draw.rect(Window, gameLayout[i][j], (X_Margin + j*tetrisBoard_Size, Y_Margin + i*tetrisBoard_Size, tetrisBoard_Size, tetrisBoard_Size), 6)
-    pygame.draw.rect(Window, (255, 0, 0), (X_Margin, Y_Margin, tetrisWindow_Width, tetrisWindow_Height), 5)
+    pygame.draw.rect(Window, (171,85,198), (X_Margin, Y_Margin, tetrisWindow_Width, tetrisWindow_Height), 4)
     drawLayout(Window, gameLayout)
     handleMuteButton(Window,mouse)
     handlePauseButton(Window,state,mouse)
