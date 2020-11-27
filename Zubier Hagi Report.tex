@@ -1,0 +1,103 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[legalpaper, portrait, margin=1in]{geometry}
+
+\title{CMPUT 355 Assignment 4}
+\author{Zubier Hagi}
+\date{November 2020}
+
+\begin{document}
+
+\maketitle
+\section{Group Name}
+Quadtris
+\section{Members}
+Mahmood Falmaz[15*****],
+Zubier Hagi[15*****]. 
+\section{Project Contributions}
+\quad \textbf{Mahmood's Contributions}:
+Researched implementation of main menu, and user functionalities, music and other user interfaces. aliqua.\newline
+\textbf{Zubier's Contributions}:
+Researched various methods of implementation of the tetris game, the different shapes, rotations, boundaries and overall functionalities of the tetris game.
+\section{References and Repository}
+\quad To help us understand the various different shapes and methods of tetris.
+The public github repository can be found here: https://github.com/MahmoodFalmaz/Tetris355\newline
+Following references have been documented in the source code:\newline
+\begin{itemize}
+\item https://en.wikipedia.org/wiki/Tetris\end{itemize}
+\begin{itemize}
+\item https://www.slashgear.com/tetris-effect-pc-release-slated-for-next-week-as-epic-games-store-exclusive-16583994\end{itemize}
+
+
+\section{Game Description}
+\quad Tetris is a single player tile-matching game that was released in 1984. The purpose of tetris it to prevent various different shapes from stacking up to the top of the screen/board. By placing various different-shaped blocks in a way where no empty space consists between them, which allows the users to obtain points and the continuation of the game. 
+\section{Project Accomplishments}
+\quad Our initial goal was to implement a 2 player Hex game on a 6*6 Y-shaped board. However, we have shifted our focus to tetris to establish a unique game that is visually appealing with pygame. The most satisfying part was the ability to have the game running and working. We did have a few difficulties as the game would crash either from the beginning or midway. The most disappointing part was when team members decided midway that they will no longer be able to commit to this assignment. For future iterations, i would love to have the game be implemented in 2 player method, where 1 player tries to limit the amount of stacked blocks while the other plays objectives is to stack as many as they could. I believe that this would make it more competitive as it would allow users to think thoroughly of each piece that they place.
+\section{Project Performance}
+\quad The tetris implemented is a tutor game, to allow players to get familiar with the layout/functionality of the game. The feedback received was to have either music implemented and have some sort of clear instructions on how to play the game. One feedback that we did develop on is to allow the player to understand the next shape that will be displayed to allow the player to decide on what their best move should be.
+\section{Total Outcome}
+\quad The overall outcome of the project came out well as it is both visually and musically matching to the game. We believe that it is user friendly and easy to use since the learning curve isn’t too steep and the functionalities are quite easy to understand. Furthermore, the game pace is quite normal and the beginning stages of the game allows the user to make a few mistakes without any consequences. Thus far, we have spent about 20+ hours learning/brainstorming and developing our tetris game.
+\newpage
+\setcounter{section}{0}
+\section{Diary}
+My contribution to the project consisted of doing research and the setting up of the game. We decided on tetris as our project as we deemed it was a game that most people are familiar with and the functionalities were easy to explore with different types of algorithms. The first step of this project was, to have a working prototype of tetris using pygame and introduce new functionalities through each iteration. Since this will be a tutor type of game we will be constructing, we want to make sure that it's easy for user to use and that they are learning as they continue to adapt and play tetris more. The second stage consisted of building upon the working prototype and focus on the UI/UX.
+The third stage was to ensure that the game was consistent throughout and that the music and functionalities are working as anticipated. The fourth step was to look into algorithms/methods to adapt the game differently and possible have an AI implemented, however this wasn't achieved though the ability to understand the strategies used to was important. The genetic algorithm caught my eye as it can converge the local optimum fairly quickly based on the weights given. The genetic algorithm allows the AI to learn how the game is played based on the specified features. Overall, my contribution varied from researching to developing the game and figuring out ways to improve the game performance overtime. Since the play will continue to play overtime, the difficulty must be increased slightly to allow the player to adapt and challenge them overtime.\newline
+
+\begin{itemize}
+\item Phase 1: (Monday October 26,2020) ~ 4 hours
+\begin{itemize}
+\item Brainstorming/Discussing various different possible games to implement and what we would learn. Discussion on Hex, Go, Tic Tac Toe and Tetris.
+\item  Upon analysis (Complexity/ Run Time, Language and Tools) of each game we concluded that Hex would not be an ideal project to construct as it wouldn't’t be unique as the professor has provided us with the implementation of Hex during the term. Therefore, we have finalized in doing Tetris.\newline
+\end{itemize}
+
+\end{itemize}
+
+\begin{itemize}
+\item Phase 2: (Monday November 2,2020) ~ 2 hours
+\begin{itemize}
+\item Discussed the various research we have done. (Algorithm, Methodologies, Etc.)
+\item We had split the tasks up at this point. (Pygame,GitHub, Basic Source Code for game layout to be established).\newline
+\end{itemize}
+
+\end{itemize}
+
+\begin{itemize}
+\item Phase 3: (Week of Nov 9,2020)  ~ 10-12 hours
+\begin{itemize}
+\item Discussed what we have accomplished thus far, pair programming and general structure of the code. Established user functionalities such as maneuvering around the board, checking legal state of the tetris tile. [Shape Size/Color/Legal Moves/ Boundaries and game state]\newline
+\end{itemize}
+
+\end{itemize}
+
+
+\begin{itemize}
+\item Phase4: (Week of Nov 16,2020)  ~ 4 hours
+\begin{itemize}
+\item Merging/integration of accomplished tasks, reviewing code, documentation and research on what could be accomplished within the remaining time period. I’ve looked into other algorithms for future iterations such as:\newline
+\end{itemize}
+\begin{itemize}
+\begin{itemize}
+\item Nicetris: Ranks pieces by current goodness-of-fit and chooses the best one.
+\begin{itemize}
+\item http://www.cs.cornell.edu/courses/cs4154/2017fa/sessions/lecture9.pdf\newline
+\end{itemize}
+
+\item  True Random: Equal drawings of tetrominoes shape replacements. Since there are 7 shapes there is a possible 7! Or 5040 permutations of seven elements.\newline
+\item  Genetic Algorithms: Finding a method that can maximize the efficiency of a player. The player moves generates the future game state and computes the weighted sum of features for each state. The player picks the move for the state with the largest weighted sum.
+\begin{itemize}
+\begin{itemize}
+\item  http://cs229.stanford.edu/proj2015/238_poster.pdf
+\section{References}
+\begin{itemize}
+\item https://www.pygame.org/docs/\end{itemize}
+\begin{itemize}
+\item https://levelup.gitconnected.com/writing-tetris-in-python-2a16bddb5318\end{itemize}
+\begin{itemize}
+\item https://www.byteacademy.co/blog/tetris-pygame-python\end{itemize}
+\begin{itemize}
+\item https://www.pygame.org/project/3783\end{itemize}
+\begin{itemize}
+\item https://stackoverflow.com/questions/62106273/tetris-pygame-falling-issues\end{itemize}
+
+
+\end{document}
