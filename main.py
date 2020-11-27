@@ -262,7 +262,17 @@ def createGrid(lockedPositions={}):
 
 #Tetris Shapes
 def listShape(shape):
-    pass
+    positions = []
+    format = shape.shape[shape.rotation % len(shape.shape)]
+    for i, line in enumerate(format):
+        row = list(line)
+        for j, column in enumerate(row):
+            if column == '0':
+                positions.append((shape.x + j, shape.y + i))
+    for i, pos in enumerate(positions):
+        positions[i] = (pos[0] - 2, pos[1] - 4)
+
+    return positions
 
 #Checks if the tile dimensions are moved into a vlid space
 def spaceCheck(shape, gameLayout):
@@ -285,15 +295,29 @@ def checkState(positions):
 
 
 def randomTetris_Shape():
-    pass
+    return Shape(5, 0, random.choice(tetrisShapes))
 
 #Displays text on the main screen
 def displayText(Window, text, size, color):
-    pass
+    font = pygame.font.SysFont("comicsans", size, bold=True)
+    label = font.render(text, 1, color)
+    if text == 'Press Any Key To Play':
+        Window.blit(label, (X_Margin + tetrisWindow_Width /2 - (label.get_width()/2), Y_Margin + tetrisWindow_Height/4 - label.get_height()/4))
+    if text == 'Press [Q] To Quit':
+        Window.blit(label, (X_Margin + tetrisWindow_Width /2 - (label.get_width()/2), Y_Margin + tetrisWindow_Height/2.5 - label.get_height()/2.5))
+    if text == 'Move':
+        Window.blit(label,(230, 620))
+    if text == "Game Over!":
+        Window.blit(label, (X_Margin + tetrisWindow_Width /2 - (label.get_width()/2), Y_Margin + tetrisWindow_Height/2 - label.get_height()/2))
 
 #Displays the game layout
 def drawLayout(Window, gameLayout):
-    pass
+    score_xCord = X_Margin
+    score_yCord = Y_Margin
+    for i in range(len(gameLayout)):
+        pygame.draw.line(Window, (128,128,128), (score_xCord, score_yCord + i*tetrisBoard_Size), (score_xCord+tetrisWindow_Width, score_yCord+ i*tetrisBoard_Size))
+        for j in range(len(gameLayout[i])):
+            pygame.draw.line(Window, (128, 128, 128), (score_xCord + j*tetrisBoard_Size, score_yCord),(score_xCord + j*tetrisBoard_Size, score_yCord + tetrisWindow_Height))
 
 #Rows that have be obtained by the player // Shifting row down one and adding to the top if once it's been cleared.
 def scoredRows(gameLayout, locked):
@@ -318,7 +342,19 @@ def scoredRows(gameLayout, locked):
 
 #Determins the next shape to be used
 def nextShape(shape, Window):
-    pass
+    font = pygame.font.SysFont('comicsans', 30)
+    label = font.render('Next Shape', 1, (255,255,255))
+
+    score_xCord = X_Margin + tetrisWindow_Width + 50
+    score_yCord = Y_Margin + tetrisWindow_Height/2 - 100
+    format = shape.shape[shape.rotation % len(shape.shape)]
+
+    for i, line in enumerate(format):
+        row = list(line)
+        for j, column in enumerate(row):
+            if column == '0':
+                pygame.draw.rect(Window, shape.color, (score_xCord + j*tetrisBoard_Size, score_yCord + i*tetrisBoard_Size, tetrisBoard_Size, tetrisBoard_Size), 5)
+    Window.blit(label, (score_xCord + 10, score_yCord - 30))
 
 #Displays the layout, text, score and state of the game
 def drawWindow(Window, gameLayout,mouse,state, score=0):
@@ -344,17 +380,48 @@ def drawWindow(Window, gameLayout,mouse,state, score=0):
 
 #Handles the Mute button
 def handleMuteButton(Window,mouse):
-    pass
+    font = pygame.font.SysFont('comicsans', 30)
+    if (mixer.music.get_volume()==0):
+        mute_text = font.render('unmute' , True ,  (255,255,255))
+    else:
+        mute_text = font.render('mute' , True ,  (255,255,255))
+
+    mute_xCord = WindowdowWidth-140
+    mute_yCord = WindowdowHeight-40
+
+    if (mute_xCord <= mouse[0] <= mute_xCord+140) and (mute_yCord <= mouse[1] <= mute_yCord+40):
+        pygame.draw.rect(Window,(170,170,170),[mute_xCord,mute_yCord,140,40])      
+    else: 
+        pygame.draw.rect(Window,(100,100,100),[mute_xCord,mute_yCord,140,40])   
+
+    Window.blit(mute_text , (mute_xCord,mute_yCord))
 
 #Handles the Pause Button
 def handlePauseButton(Window,state,mouse):
-    pass
+    font = pygame.font.SysFont('comicsans', 30)
+    font = pygame.font.SysFont('comicsans', 60)
+    if (state == 1):
+        pause_text = font.render('pause' , True ,  (255,255,255))
+    else:
+        pause_text = font.render('resume' , True ,  (255,255,255))
+        pause_Message = font.render('Game Paused', 1, (255, 255, 255))
+        Window.blit(pause_Message, (X_Margin + tetrisWindow_Width / 2 - (pause_Message.get_width() / 2), WindowdowHeight/2))
+    pause_xCord = WindowdowWidth-140 
+    pause_yCord = WindowdowHeight-80
+    if (pause_xCord <= mouse[0] <= pause_xCord+140) and (pause_yCord <= mouse[1] <= pause_yCord+40):
+        pygame.draw.rect(Window,(170,170,170),[pause_xCord,pause_yCord,140,40])      
+    else: 
+        pygame.draw.rect(Window,(100,100,100),[pause_xCord,pause_yCord,140,40])
+    Window.blit(pause_text , (pause_xCord,pause_yCord))
 
 #Main Menu
 def mainMenu(Window):
     run = True
     while run:
         Window.fill((0,0,0))
+        Window.blit(image, (0,0))
+        Window.blit(logo, (WindowdowWidth/3,WindowdowHeight/16))
+        Window.blit(arrow_keys, (450, 600))
         displayText(Window, 'Press Any Key To Play', 60, (255,255,255))
         displayText(Window, 'Press [Q] To Quit', 60, (255,255,255))
         displayText(Window, 'Move', 60, (255,255,255))
@@ -372,7 +439,10 @@ def mainMenu(Window):
 
 
 Window = pygame.display.set_mode((WindowdowWidth, WindowdowHeight))
-image  = pygame.image.load("tetris.jpg").convert_alpha()
+logo = pygame.image.load("Tetrislogo.png").convert_alpha()
+arrow_keys = pygame.image.load('arrowkeys.png').convert_alpha()
+arrow_keys = pygame.transform.scale(arrow_keys, (150, 85))
 size = width, height = 800 , 800
+image  = pygame.image.load("tetris.jpg").convert_alpha()
 image = pygame.transform.scale(image,size)
 mainMenu(Window) 
